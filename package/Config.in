@@ -2925,4 +2925,8 @@ menu "Text editors and viewers"
 	source "package/vim/Config.in"
 endmenu
 
+menu "rockchip io"
+	source "package/rockchip-io/Config.in"
+endmenu
+
 endmenu
