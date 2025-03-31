@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-ARMADILLO_VERSION = 14.0.3
+ARMADILLO_VERSION = 14.4.0
 ARMADILLO_SOURCE = armadillo-$(ARMADILLO_VERSION).tar.xz
 ARMADILLO_SITE = https://downloads.sourceforge.net/project/arma
 ARMADILLO_INSTALL_STAGING = YES
@@ -28,6 +28,10 @@ endif
 ifeq ($(BR2_PACKAGE_LAPACK),y)
 ARMADILLO_CONF_OPTS += -DLAPACK_FOUND=ON
 ARMADILLO_DEPENDENCIES += lapack
+endif
+
+ifeq ($(BR2_STATIC_LIBS),y)
+ARMADILLO_CONF_OPTS += -DSTATIC_LIB=ON
 endif
 
 $(eval $(cmake-package))
