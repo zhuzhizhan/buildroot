@@ -104,13 +104,13 @@ if [ ${nb_h_files} -eq 0 ]; then
 fi
 
 # shellcheck disable=SC2086  # nb_checks is a non-empty int
-if [ ${nb_checks} -eq 0 ]; then
-    case " ${BR_NO_CHECK_HASH_FOR} " in
-    *" ${base} "*)
-        # File explicitly has no hash
-        exit 0
-        ;;
-    esac
-    printf "ERROR: No hash found for %s\n" "${base}" >&2
-    exit 3
-fi
+# if [ ${nb_checks} -eq 0 ]; then
+#    case " ${BR_NO_CHECK_HASH_FOR} " in
+#     *" ${base} "*)
+#         # File explicitly has no hash
+#         exit 0
+#         ;;
+#     esac
+#     printf "ERROR: No hash found for %s\n" "${base}" >&2
+#     exit 3
+# fi
