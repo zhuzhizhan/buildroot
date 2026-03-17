@@ -2914,4 +2914,8 @@ menu "Text editors and viewers"
 	source "package/vim/Config.in"
 endmenu
 
+menu "app user"
+	source "package/app-helloworld/Config.in"
+endmenu
+
 endmenu

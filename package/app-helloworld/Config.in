@@ -1,0 +1,6 @@
+config BR2_PACKAGE_APP_HELLOWORLD
+	bool "helloworld"
+	help
+	  eric test demo
+
+
