@@ -1,5 +1,5 @@
 # md5, sha256 from https://pypi.org/pypi/sqlalchemy/json
-md5  4aecb8d3b1d077d6099c1f8ed18367a4  sqlalchemy-2.0.39.tar.gz
-sha256  5d2d1fe548def3267b4c70a8568f108d1fed7cbbeccb9cc166e05af2abc25c22  sqlalchemy-2.0.39.tar.gz
+md5  e7e941a14ffe78d66bf23cdaaccdee7d  sqlalchemy-2.0.49.tar.gz
+sha256  d15950a57a210e36dd4cec1aac22787e2a4d57ba9318233e2ef8b2daf9ff2d5f  sqlalchemy-2.0.49.tar.gz
 # Locally computed sha256 checksums
-sha256  9821720b58d4a565b61321007a8ad43ab6991a3959e66cd5db4dd9eae69c7dfc  LICENSE
+sha256  e862bb5b904fb5513c3e14288d7a25a12eb0ecc7847a0a965d310e9a955e7cb9  LICENSE

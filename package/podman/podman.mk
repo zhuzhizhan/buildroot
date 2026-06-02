@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PODMAN_VERSION = v5.4.1
+PODMAN_VERSION = v5.7.0
 PODMAN_SITE = https://github.com/containers/podman
 PODMAN_SITE_METHOD = git
 
@@ -30,6 +30,12 @@ PODMAN_TAGS += seccomp
 # This is required for rootless containers, i.e containers started by non-root
 PODMAN_DEPENDENCIES += shadow
 PODMAN_TAGS += libsubid
+
+PODMAN_CPE_ID_VERSION = $(subst v,,$(PODMAN_VERSION))
+
+# Windows only issue:
+# https://github.com/containers/podman/security/advisories/GHSA-hc8w-h2mf-hp59
+PODMAN_IGNORE_CVES += CVE-2026-33414
 
 ifeq ($(BR2_PACKAGE_BTRFS_PROGS),y)
 PODMAN_DEPENDENCIES += btrfs-progs
@@ -98,16 +104,6 @@ define PODMAN_LINUX_CONFIG_FIXUPS
 	$(call KCONFIG_ENABLE_OPT,CONFIG_KEYS)
 	$(PODMAN_LINUX_CONFIG_FIXUPS_BTRFS)
 endef
-
-define PODMAN_CONFIG
-	$(Q)$(INSTALL) -D -m 0644 \
-		$(PODMAN_PKGDIR)/policy.json \
-		$(TARGET_DIR)/etc/containers/policy.json
-	$(Q)$(INSTALL) -D -m 0644 \
-		$(PODMAN_PKGDIR)/registries.conf \
-		$(TARGET_DIR)/etc/containers/registries.conf
-endef
-PODMAN_POST_INSTALL_TARGET_HOOKS += PODMAN_CONFIG
 
 define PODMAN_HELPERS
 	$(Q)mkdir -p $(TARGET_DIR)/usr/libexec/podman
