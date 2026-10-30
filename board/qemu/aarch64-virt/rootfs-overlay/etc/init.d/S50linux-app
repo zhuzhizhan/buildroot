@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# Mount the host linux-app directory shared through virtio-9p.
+
+MOUNT_TAG="hostshare"
+MOUNTPOINT="/mnt/linux-app"
+
+case "$1" in
+	start)
+		printf "Mounting %s on %s: " "${MOUNT_TAG}" "${MOUNTPOINT}"
+		mkdir -p "${MOUNTPOINT}"
+		if mount -t 9p -o trans=virtio,version=9p2000.L,msize=512000 \
+			"${MOUNT_TAG}" "${MOUNTPOINT}"; then
+			echo "OK"
+		else
+			echo "FAIL"
+		fi
+		;;
+	stop)
+		printf "Unmounting %s: " "${MOUNTPOINT}"
+		if umount "${MOUNTPOINT}"; then
+			echo "OK"
+		else
+			echo "FAIL"
+		fi
+		;;
+	restart|reload)
+		"$0" stop
+		"$0" start
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart|reload}"
+		exit 1
+		;;
+esac
